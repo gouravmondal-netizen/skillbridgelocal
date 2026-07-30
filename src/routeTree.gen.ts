@@ -12,8 +12,10 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as EmployerRouteImport } from './routes/employer'
+import { Route as FinanceRouteImport } from './routes/finance'
 import { Route as HireRouteImport } from './routes/hire'
 import { Route as JobsRouteImport } from './routes/jobs'
+import { Route as TrainingRouteImport } from './routes/training'
 import { Route as WorkerRouteImport } from './routes/worker'
 
 const IndexRoute = IndexRouteImport.update({
@@ -31,6 +33,11 @@ const EmployerRoute = EmployerRouteImport.update({
   path: '/employer',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FinanceRoute = FinanceRouteImport.update({
+  id: '/finance',
+  path: '/finance',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const HireRoute = HireRouteImport.update({
   id: '/hire',
   path: '/hire',
@@ -39,6 +46,11 @@ const HireRoute = HireRouteImport.update({
 const JobsRoute = JobsRouteImport.update({
   id: '/jobs',
   path: '/jobs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TrainingRoute = TrainingRouteImport.update({
+  id: '/training',
+  path: '/training',
   getParentRoute: () => rootRouteImport,
 } as any)
 const WorkerRoute = WorkerRouteImport.update({
@@ -51,16 +63,20 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
   '/employer': typeof EmployerRoute
+  '/finance': typeof FinanceRoute
   '/hire': typeof HireRoute
   '/jobs': typeof JobsRoute
+  '/training': typeof TrainingRoute
   '/worker': typeof WorkerRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
   '/employer': typeof EmployerRoute
+  '/finance': typeof FinanceRoute
   '/hire': typeof HireRoute
   '/jobs': typeof JobsRoute
+  '/training': typeof TrainingRoute
   '/worker': typeof WorkerRoute
 }
 export interface FileRoutesById {
@@ -68,24 +84,53 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
   '/employer': typeof EmployerRoute
+  '/finance': typeof FinanceRoute
   '/hire': typeof HireRoute
   '/jobs': typeof JobsRoute
+  '/training': typeof TrainingRoute
   '/worker': typeof WorkerRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/admin' | '/employer' | '/hire' | '/jobs' | '/worker'
+  fullPaths:
+    | '/'
+    | '/admin'
+    | '/employer'
+    | '/finance'
+    | '/hire'
+    | '/jobs'
+    | '/training'
+    | '/worker'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/admin' | '/employer' | '/hire' | '/jobs' | '/worker'
-  id: '__root__' | '/' | '/admin' | '/employer' | '/hire' | '/jobs' | '/worker'
+  to:
+    | '/'
+    | '/admin'
+    | '/employer'
+    | '/finance'
+    | '/hire'
+    | '/jobs'
+    | '/training'
+    | '/worker'
+  id:
+    | '__root__'
+    | '/'
+    | '/admin'
+    | '/employer'
+    | '/finance'
+    | '/hire'
+    | '/jobs'
+    | '/training'
+    | '/worker'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AdminRoute: typeof AdminRoute
   EmployerRoute: typeof EmployerRoute
+  FinanceRoute: typeof FinanceRoute
   HireRoute: typeof HireRoute
   JobsRoute: typeof JobsRoute
+  TrainingRoute: typeof TrainingRoute
   WorkerRoute: typeof WorkerRoute
 }
 
@@ -112,6 +157,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EmployerRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/finance': {
+      id: '/finance'
+      path: '/finance'
+      fullPath: '/finance'
+      preLoaderRoute: typeof FinanceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/hire': {
       id: '/hire'
       path: '/hire'
@@ -124,6 +176,13 @@ declare module '@tanstack/react-router' {
       path: '/jobs'
       fullPath: '/jobs'
       preLoaderRoute: typeof JobsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/training': {
+      id: '/training'
+      path: '/training'
+      fullPath: '/training'
+      preLoaderRoute: typeof TrainingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/worker': {
@@ -140,8 +199,10 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AdminRoute: AdminRoute,
   EmployerRoute: EmployerRoute,
+  FinanceRoute: FinanceRoute,
   HireRoute: HireRoute,
   JobsRoute: JobsRoute,
+  TrainingRoute: TrainingRoute,
   WorkerRoute: WorkerRoute,
 }
 export const routeTree = rootRouteImport
