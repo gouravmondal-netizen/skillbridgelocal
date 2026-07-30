@@ -18,7 +18,7 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: "SkillBridge — Find Local Jobs Within 4–8 km" },
       {
         property: "og:description",
-        content: "GPS-matched daily wage, weekend and contract work for local talent. An SDG 8 platform.",
+        content: "Hyperlocal job platform connecting daily wage, weekend and contract workers with nearby employers through GPS matching, skill badges and training.",
       },
     ],
   }),

@@ -79,15 +79,21 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "SkillBridge — Local Talent, Local Opportunities" },
+      { title: "SkillBridge — Find Local Jobs Within 4–8 km" },
       {
         name: "description",
         content:
-          "SkillBridge connects daily wage, weekend and contract workers with employers within 4-8 km using GPS matching.",
+          "Hyperlocal job platform connecting daily wage, weekend and contract workers with nearby employers through GPS matching, skill badges and training.",
       },
       { name: "author", content: "SkillBridge" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:title", content: "SkillBridge — Find Local Jobs Within 4–8 km" },
+      { name: "twitter:title", content: "SkillBridge — Find Local Jobs Within 4–8 km" },
+      { property: "og:description", content: "Hyperlocal job platform connecting daily wage, weekend and contract workers with nearby employers through GPS matching, skill badges and training." },
+      { name: "twitter:description", content: "Hyperlocal job platform connecting daily wage, weekend and contract workers with nearby employers through GPS matching, skill badges and training." },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/15c4ebf7-c889-4bd1-be47-4f7d97ea6545" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/15c4ebf7-c889-4bd1-be47-4f7d97ea6545" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
@@ -97,7 +103,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Space+Grotesk:wght@500;600;700&display=swap",
       },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
     ],
   }),
   shellComponent: RootShell,
