@@ -125,9 +125,13 @@ export function SiteFooter() {
           </ul>
         </div>
       </div>
+      <div className="border-t border-border px-4 py-5">
+        <TaglineStrip />
+      </div>
       <div className="border-t border-border py-4 text-center text-xs text-muted-foreground">
         Prototype build · data stored locally in your browser
       </div>
+
     </footer>
   );
 }
