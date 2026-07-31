@@ -14,6 +14,7 @@ import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { SiteHeader, SiteFooter } from "@/components/site-chrome";
 import { LanguageProvider } from "@/lib/i18n";
+import { AutoTranslate } from "@/components/auto-translate";
 
 
 function NotFoundComponent() {
@@ -133,6 +134,7 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <LanguageProvider>
+        <AutoTranslate />
         <div className="flex min-h-screen flex-col">
           <SiteHeader />
           <main className="flex-1">
