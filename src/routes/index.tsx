@@ -34,6 +34,7 @@ const steps = [
 
 function Home() {
   const { jobs, location, radius } = useStore();
+  const { t } = useLang();
   const near = jobs.filter((j) => haversine(location, j) <= radius);
   const weekend = jobs.filter((j) => j.type === "Weekend");
 
@@ -48,25 +49,31 @@ function Home() {
         <div className="relative mx-auto grid max-w-7xl gap-10 px-4 py-20 lg:grid-cols-[1.2fr_1fr] lg:py-28">
           <div className="text-primary-foreground">
             <Badge className="border-0 bg-accent text-accent-foreground">SDG 8 · Decent Work & Economic Growth</Badge>
-            <h1 className="mt-4 text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
-              Find Local Jobs Near You
+            <p className="mt-4 font-display text-sm font-bold uppercase tracking-[0.2em] text-accent">
+              {t("tag.1")}
+            </p>
+            <h1 className="mt-2 text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
+              {t("hero.title")}
             </h1>
+            <p className="mt-3 text-base font-medium opacity-90">
+              <RotatingTagline />
+            </p>
             <p className="mt-4 max-w-xl text-lg opacity-90">
-              SkillBridge connects workers and employers within a 4–8 km radius — daily wage, weekend shifts,
-              part-time and contract work, matched by GPS and skill badges.
+              {t("hero.sub")}
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90">
                 <Link to="/jobs">
-                  <Search className="mr-2 size-4" /> Find Jobs
+                  <Search className="mr-2 size-4" /> {t("cta.find")}
                 </Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="border-primary-foreground/40 bg-transparent text-primary-foreground hover:bg-primary-foreground/10">
                 <Link to="/hire">
-                  <Briefcase className="mr-2 size-4" /> Hire Workers
+                  <Briefcase className="mr-2 size-4" /> {t("cta.hire")}
                 </Link>
               </Button>
             </div>
+
             <div className="mt-10 grid max-w-lg grid-cols-3 gap-4">
               {[
                 { n: near.length, l: `Jobs within ${radius} km` },
