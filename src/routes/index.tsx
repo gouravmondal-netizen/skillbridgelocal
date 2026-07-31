@@ -5,6 +5,9 @@ import { Badge } from "@/components/ui/badge";
 import heroImg from "@/assets/hero-workers.jpg";
 import { useStore } from "@/lib/use-store";
 import { employers, haversine, workers } from "@/lib/skillbridge";
+import { useLang } from "@/lib/i18n";
+import { RotatingTagline } from "@/components/tagline";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
