@@ -2,16 +2,20 @@ import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { Menu, X, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { LanguageSwitcher } from "@/components/language-switcher";
+import { RotatingTagline, TaglineStrip } from "@/components/tagline";
+import { useLang } from "@/lib/i18n";
 
 const links = [
-  { to: "/", label: "Home" },
-  { to: "/jobs", label: "Find Jobs" },
-  { to: "/hire", label: "Hire Workers" },
-  { to: "/finance", label: "Financial Aid" },
-  { to: "/training", label: "Skill Training" },
-  { to: "/support", label: "Customer Care" },
-  { to: "/admin", label: "Admin" },
+  { to: "/", key: "nav.home" },
+  { to: "/jobs", key: "nav.jobs" },
+  { to: "/hire", key: "nav.hire" },
+  { to: "/finance", key: "nav.finance" },
+  { to: "/training", key: "nav.training" },
+  { to: "/support", key: "nav.support" },
+  { to: "/admin", key: "nav.admin" },
 ] as const;
+
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
