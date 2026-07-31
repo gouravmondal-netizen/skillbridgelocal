@@ -19,6 +19,7 @@ const links = [
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const { t } = useLang();
   return (
     <header className="sticky top-0 z-50 border-b border-border/70 bg-background/85 backdrop-blur">
       <div className="mx-auto flex max-w-7xl items-center gap-4 px-4 py-3">
@@ -26,7 +27,10 @@ export function SiteHeader() {
           <span className="grid size-9 place-items-center rounded-lg bg-primary text-primary-foreground">
             <MapPin className="size-5" />
           </span>
-          <span className="font-display text-lg font-bold tracking-tight">SkillBridge</span>
+          <span className="leading-tight">
+            <span className="block font-display text-lg font-bold tracking-tight">SkillBridge</span>
+            <RotatingTagline className="hidden text-[10px] font-medium uppercase tracking-widest text-muted-foreground sm:block" />
+          </span>
         </Link>
 
         <nav className="ml-auto hidden items-center gap-1 lg:flex">
@@ -38,17 +42,18 @@ export function SiteHeader() {
               className="rounded-md px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
               activeProps={{ className: "bg-secondary text-foreground font-medium" }}
             >
-              {l.label}
+              {t(l.key)}
             </Link>
           ))}
         </nav>
 
         <div className="ml-auto flex items-center gap-2 lg:ml-0">
+          <LanguageSwitcher />
           <Button asChild size="sm" variant="outline" className="hidden sm:inline-flex">
-            <Link to="/worker">Worker Portal</Link>
+            <Link to="/worker">{t("nav.worker")}</Link>
           </Button>
           <Button asChild size="sm">
-            <Link to="/register">Login / Register</Link>
+            <Link to="/register">{t("nav.login")}</Link>
           </Button>
           <button
             className="rounded-md p-2 lg:hidden"
@@ -62,23 +67,26 @@ export function SiteHeader() {
 
       {open && (
         <nav className="grid gap-1 border-t border-border bg-card px-4 py-3 lg:hidden">
-          {[...links, { to: "/worker", label: "Worker Portal" }, { to: "/employer", label: "Employer Portal" }].map(
-            (l) => (
-              <Link
-                key={l.to}
-                to={l.to}
-                onClick={() => setOpen(false)}
-                className="rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-secondary hover:text-foreground"
-              >
-                {l.label}
-              </Link>
-            ),
-          )}
+          {[
+            ...links.map((l) => ({ to: l.to as string, key: l.key as string })),
+            { to: "/worker", key: "nav.worker" },
+            { to: "/employer", key: "nav.employer" },
+          ].map((l) => (
+            <Link
+              key={l.to}
+              to={l.to}
+              onClick={() => setOpen(false)}
+              className="rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-secondary hover:text-foreground"
+            >
+              {t(l.key)}
+            </Link>
+          ))}
         </nav>
       )}
     </header>
   );
 }
+
 
 export function SiteFooter() {
   return (
